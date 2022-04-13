@@ -23,6 +23,7 @@ function execute(){
 //中间件
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use('/',express.static('./'))
 
 //文件相关
 var fs = require("fs");
@@ -35,21 +36,29 @@ function callBackWrite(err) {
 //handler方法
 app.post('/process_post' ,function (req, res) {
   //req获取数据写入文件---两个输入框
-  fs.writeFile(TextFilePath, req.body.textData, callBackWrite);
-  fs.writeFile(ProductionPath, req.body.productionData, callBackWrite);
+  // fs.writeFileSync(TextFilePath, req.body.textData);
+  // fs.writeFileSync(ProductionPath, req.body.productionData);
+  fs.writeFileSync('./textData', req.body.textData);
+  fs.writeFileSync('./productionData', req.body.productionData);
 
+  console.log(req.body)
   //调用java逻辑，生成输出到文件中
-  execute();
+  // execute();
 
   //读取java生成的文件
-  var token = fs.readFileSync(tokenPath, 'utf8');
-  var tree = fs.readFileSync(treePath, 'utf8');
-  var LL1 = fs.readFileSync(LL1Path, 'utf8');
+  // var token = fs.readFileSync(tokenPath, 'utf8');
+  // var tree = fs.readFileSync(treePath, 'utf8');
+  // var LL1 = fs.readFileSync(LL1Path, 'utf8');
 
+  result = {
+    textData:req.body.textData,
+    productionData : req.body.productionData,
+    token:'token',
+    tree:'tree',
+    LL1:'LL1'
+  }
   //把读取到的文件返回给前端---三个输出框
-  res.end(token)
-  res.end(tree)
-  res.end(LL1)
+  res.end(JSON.stringify(result))
 })
  
 //监听端口
