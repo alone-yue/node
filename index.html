@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            body{
+                height: 100%;
+                width: 100%;
+                position: relative;
+            }
+            #code{
+
+            }
+            #result1{
+
+            }
+            #result2{
+
+            }
+            #result3{
+                
+            }
+        </style>
+    </head>
+    <body>
+        <textarea id="code"></textarea>
+        <button id="submit">点击提交</button>
+        <textarea id="result1"></textarea>
+        <textarea id="result2"></textarea>
+        <textarea id="result3"></textarea>
+    </body>
+</html>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+// alert('hello')
+document.getElementById('submit').onclick = function(){
+    let code = document.getElementById('code').value
+    console.log(code)
+    $.ajax({
+        url:'https://statistic.csdn.net/baidu_search_success',
+        type:'get',
+        success:function(res){
+            console.log('hello')
+        }
+    })
+    $.ajax({
+        url:'http://localhost:8081/process_post',
+        type:'post',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        data:JSON.stringify({
+            textData:code,
+            productionData:'testString'
+        }),
+        success:function(res){
+            console.log(res)
+            // alert('success!')
+            res = JSON.parse(res)
+            token = res.token
+            tree = res.tree
+            LL1 = res.LL1
+            document.getElementById('result1').value = token
+            document.getElementById('result2').value = tree
+            document.getElementById('result3').value = LL1
+        }
+    })
+}
+</script>
