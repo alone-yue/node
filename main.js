@@ -3,7 +3,7 @@ var app = express();
 
 //调用java代码
 var exec = require('child_process').exec;
-basePath = "/Users/bytedance/Desktop/node/"
+basePath = "/aloneyue01/node/"
 TextFilePath = basePath + "config/text";
 ProductionPath = basePath + "config/production";
 tokenPath = basePath + "config/token";
@@ -25,6 +25,9 @@ function execute(){
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use('/',express.static('./front_end'))
+
+var cors = require("cors");
+app.use(cors())
 
 //handler
 app.post('/process_post' ,function (req, res) {
@@ -50,7 +53,7 @@ app.post('/process_post' ,function (req, res) {
 })
  
 //监听端口
-var server = app.listen(8081, function () {
+var server = app.listen(8081,'0.0.0.0', function () {
   var host = server.address().address
   var port = server.address().port
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
