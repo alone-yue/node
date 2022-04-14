@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>SNL Compile</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body class="vsc-initialized">
+    <div class="main">
+        <!-- 控制板 -->
+        <div class="dashboard">
+            <!-- 标题和按钮 -->
+            <div class="header">
+                <div class="title">SNL Compile</div>
+                <div class="controls">
+                    <button class="btn-analysis">Compile</button>
+                </div>
+            </div>
+            <!-- 编程区 -->
+            <div class="workarea">
+                <textarea id="code" class="code" style="height: 64.75rem;"></textarea>
+            </div>
+        </div>
+        <br></br>
+        <!-- 结果展示区 -->
+        <div class="outputs" name="outputs">
+            <div class="token-list">
+                <h2 class="output-title">Token List</h2>
+                <textarea class="tokenlist" disabled=""></textarea>
+            </div>
+            <div class="syntax-tree">
+                <h2 class="output-title">Syntax Tree</h2>
+                <textarea class="tree" disabled=""></textarea>
+            </div>
+            <div class="LL1">
+                <h2 class="output-title">LL1</h2>
+                <textarea class="ll1" disabled=""></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        document.getElementById('code').value = "{default code}\nprogram bubble\nvar\n\tinteger i, j, num;\n\tarray[1..20]of integer a;\nprocedure q(integer num);\n\tvar\n\t\tinteger i, j, k;\n\t\tinteger t;\n\tbegin\n\t\ti := 1;\n\t\twhile i<num do\n\t\t\tj := num-i+1;\n\t\t\tk := 1;\n\t\t\twhile k<j do\n\t\t\t\tif a[k+1]<a[k] then\n\t\t\t\t\tt := a[k];\n\t\t\t\t\ta[k] := a[k+1];\n\t\t\t\t\ta[k+1] := t\n\t\t\t\telse\n\t\t\t\t\ttemp := 0\n\t\t\t\tfi;\n\t\t\t\tk := k+1\n\t\t\tendwh;\n\t\t\ti := i+1\n\t\tendwh\n\tend\nbegin\n\tread(num);\n\ti := 1;\n\twhile i<num+1 do\n\t\tread(j);\n\t\ta[i] := j;\n\t\ti := i+1\n\tendwh;\n\tq(num);\n\ti := 1;\n\twhile i<num+1 do\n\t\twrite(a[i]);\n\t\ti := i+1\n\tendwh\nend.\n\n"
+        
+        //分析程序按钮
+        $('.btn-analysis').on('click',function(){
+            let program = $('#code').val()
+        
+            $.ajax({
+                //url:'http://60.205.211.19:3008/compile',
+                url:'http://127.0.0.1:8081/process_post',
+                type:'post',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                data:JSON.stringify({
+                    textData:program
+                }),
+                success:function(res){
+                    res = JSON.parse(res)
+                    console.log(res.tree)
+                    console.log(res.token)
+                    console.log(res.LL1)
+                    $('.syntax-tree>.tree').val(res.tree)
+                    $('.token-list>.tokenlist').val(res.token)
+                    $('.LL1>.ll1').val(res.LL1)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

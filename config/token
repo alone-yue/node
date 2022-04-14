@@ -1,0 +1,193 @@
+PROGRAM            2  1
+ID         bubble  2  2
+VAR                3  1
+INTEGER            4  1
+ID         i       4  2
+COMMA              4  3
+ID         j       4  4
+COMMA              4  5
+ID         num     4  6
+SEMI               4  7
+ARRAY              5  1
+LMIDPAREN          5  2
+INTC       1       5  3
+UNDERANGE          5  4
+INTC       20      5  5
+RMIDPAREN          5  6
+OF                 5  7
+INTEGER            5  8
+ID         a       5  9
+SEMI               5 10
+PROCEDURE          6  1
+ID         q       6  2
+LPAREN             6  3
+INTEGER            6  4
+ID         num     6  5
+RPAREN             6  6
+SEMI               6  7
+VAR                7  1
+INTEGER            8  1
+ID         i       8  2
+COMMA              8  3
+ID         j       8  4
+COMMA              8  5
+ID         k       8  6
+SEMI               8  7
+INTEGER            9  1
+ID         t       9  2
+SEMI               9  3
+BEGIN             10  1
+ID         i      11  1
+ASSIGN            11  2
+INTC       1      11  3
+SEMI              11  4
+WHILE             12  1
+ID         i      12  2
+LT                12  3
+ID         num    12  4
+DO                12  5
+ID         j      13  1
+ASSIGN            13  2
+ID         num    13  3
+MINUS             13  4
+ID         i      13  5
+PLUS              13  6
+INTC       1      13  7
+SEMI              13  8
+ID         k      14  1
+ASSIGN            14  2
+INTC       1      14  3
+SEMI              14  4
+WHILE             15  1
+ID         k      15  2
+LT                15  3
+ID         j      15  4
+DO                15  5
+IF                16  1
+ID         a      16  2
+LMIDPAREN         16  3
+ID         k      16  4
+PLUS              16  5
+INTC       1      16  6
+RMIDPAREN         16  7
+LT                16  8
+ID         a      16  9
+LMIDPAREN         16 10
+ID         k      16 11
+RMIDPAREN         16 12
+THEN              16 13
+ID         t      17  1
+ASSIGN            17  2
+ID         a      17  3
+LMIDPAREN         17  4
+ID         k      17  5
+RMIDPAREN         17  6
+SEMI              17  7
+ID         a      18  1
+LMIDPAREN         18  2
+ID         k      18  3
+RMIDPAREN         18  4
+ASSIGN            18  5
+ID         a      18  6
+LMIDPAREN         18  7
+ID         k      18  8
+PLUS              18  9
+INTC       1      18 10
+RMIDPAREN         18 11
+SEMI              18 12
+ID         a      19  1
+LMIDPAREN         19  2
+ID         k      19  3
+PLUS              19  4
+INTC       1      19  5
+RMIDPAREN         19  6
+ASSIGN            19  7
+ID         t      19  8
+ELSE              20  1
+ID         temp   21  1
+ASSIGN            21  2
+INTC       0      21  3
+FI                22  1
+SEMI              22  2
+ID         k      23  1
+ASSIGN            23  2
+ID         k      23  3
+PLUS              23  4
+INTC       1      23  5
+ENDWH             24  1
+SEMI              24  2
+ID         i      25  1
+ASSIGN            25  2
+ID         i      25  3
+PLUS              25  4
+INTC       1      25  5
+ENDWH             26  1
+END               27  1
+BEGIN             28  1
+READ              29  1
+LPAREN            29  2
+ID         num    29  3
+RPAREN            29  4
+SEMI              29  5
+ID         i      30  1
+ASSIGN            30  2
+INTC       1      30  3
+SEMI              30  4
+WHILE             31  1
+ID         i      31  2
+LT                31  3
+ID         num    31  4
+PLUS              31  5
+INTC       1      31  6
+DO                31  7
+READ              32  1
+LPAREN            32  2
+ID         j      32  3
+RPAREN            32  4
+SEMI              32  5
+ID         a      33  1
+LMIDPAREN         33  2
+ID         i      33  3
+RMIDPAREN         33  4
+ASSIGN            33  5
+ID         j      33  6
+SEMI              33  7
+ID         i      34  1
+ASSIGN            34  2
+ID         i      34  3
+PLUS              34  4
+INTC       1      34  5
+ENDWH             35  1
+SEMI              35  2
+ID         q      36  1
+LPAREN            36  2
+ID         num    36  3
+RPAREN            36  4
+SEMI              36  5
+ID         i      37  1
+ASSIGN            37  2
+INTC       1      37  3
+SEMI              37  4
+WHILE             38  1
+ID         i      38  2
+LT                38  3
+ID         num    38  4
+PLUS              38  5
+INTC       1      38  6
+DO                38  7
+WRITE             39  1
+LPAREN            39  2
+ID         a      39  3
+LMIDPAREN         39  4
+ID         i      39  5
+RMIDPAREN         39  6
+RPAREN            39  7
+SEMI              39  8
+ID         i      40  1
+ASSIGN            40  2
+ID         i      40  3
+PLUS              40  4
+INTC       1      40  5
+ENDWH             41  1
+END               42  1
+DOT               42  2
