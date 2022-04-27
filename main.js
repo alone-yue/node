@@ -4,7 +4,7 @@ var app = express();
 //调用java代码
 var exec = require('child_process').exec;
 basePath = "/aloneyue01/node/"
-//basePath = "/Users/bytedance/Desktop/node/"
+//basePath = "/Users/bytedance/vscode_project/çnode/"
 TextFilePath = basePath + "config/text";
 ProductionPath = basePath + "config/production";
 tokenPath = basePath + "config/token";
